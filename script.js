@@ -1,63 +1,51 @@
 let inputLetra = document.querySelector("input");
-let  h2Vazio = document.querySelector("#vazio");
-let button = document.querySelector("button");
 let palpite = inputLetra.value.toLowerCase();
-let letras = ['p', 'a', 'l', 'a', 'v', 'r', 'a'];
-let acertou = [];
+
+let button = document.querySelector("button");
+
+let letrasPalavra = ['p', 'a', 'l', 'a', 'v', 'r', 'a'];
+
 let errou = [];
 let tentativas = 6;
 let vetor = [];
 let erro = document.querySelector(".erro");
 
+let letraOculta = document.querySelector('#letraOculta');
 
-
-
-for (let letra of letras) {
+for (let letra of letrasPalavra) {
     vetor.push("_");
-    console.log(letra);
-
-
 }
 
+let h2Vazio = document.createElement('h2');
+
+const criaEspaco = function(){
+    
+    h2Vazio.innerHTML = vetor;
+    letraOculta.appendChild(h2Vazio);
+}
+
+window.onload = criaEspaco;
 
 
 button.onclick = function () {
+
     let palpite = inputLetra.value.toLowerCase();
-    // apagar palpite aquiconsole.log(palpite);
-
-
-    // while esta servindo para contar as tentativas
-    while (tentativas === 0) {
-        for (let i = 0; i < letras.length; i++) {
-            //receber palpite esse if está comparando o palpite com o vetor letras
-        
-            if (palpite === letras[i]) {
-                vetor[i] = letras[i];
-                h2Vazio.innerHTML = vetor[i];
-
+    let wrong = document.createElement('p');
+    let right = document.createElement('span');
+    // apagar palpite aqui
+        for (let i = 0; i < letrasPalavra.length; i++) {
+            //receber palpite esse if está comparando o palpite com o vetor letrasPalavra
+            if(palpite == letrasPalavra[i]){
+                for (posicao of vetor){
+                    posicao = letrasPalavra[i];
+                }
+                console.log(posicao);
+            } else {
+                wrong.innerHTML = palpite;
             }
 
-            //acertou.push(letras[i]);
-            //console.log(acertou);
-
-            //Exibir vetor aqui em H!
-            // se não acertou a letra de cima "erro"
-            else {
-                errou.push(letras[i]);
-
-                if (errou.length == 0) {
-                    alert('Seu burro');
-                    
-
-                } //if
-
-
-                console.log(errou);
-
-
-            } //if
-            
         } //for
-        tentativas--;
-    }//while
+        right.innerHTML = posicao;
+        h2Vazio.appendChild(right);
+        erro.appendChild(wrong);
 }//function

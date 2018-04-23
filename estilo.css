@@ -1,16 +1,14 @@
 
-
 section div{
     display: inline;
     align-items: flex-start;  
     margin: 10px;
 }
+
 .margem{
     margin: 20px;
 }
+
 .erro div {
     color: red;
 }
- body{
-     margin: 0;
- }
